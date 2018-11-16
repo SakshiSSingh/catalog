@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block body_block %}
+	<div class = 'flash'>
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+			{% for message in messages %}
+				<li><strong> {{ message }} </strong> </li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		{% endwith %}
+	</div>
+<div class="container jumbotron">
+
+
+<h2>{{ category.name }}</h2>
+
+
+	{% for item in items %}
+<li>	<a href = "{{url_for('desc_item', category_id = item.category.id,item_id=item.id)}}">{{item.name}}</a></li>
+		{% endfor %}
+<br>
+	<a href="{{url_for('newItem', category_id = category.id)}}" class="btn btn-info btn-lg">
+  <span class="glyphicon glyphicon-pencil"></span>Create a New item.</a>
+
+</div>
+
+
+{% endblock %}

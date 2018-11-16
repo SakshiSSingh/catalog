@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% block body_block %}
+<div class = 'flash'>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+    {% for message in messages %}
+      <li><strong> {{ message }} </strong> </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+</div><div class="container jumbotron">
+
+
+    <a href="{{url_for('editItem',category_id=category.id, item_id = item.id)}}"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
+
+     <a href="{{url_for('delete_item', category_id=category.id,item_id = item.id)}}"><span class="glyphicon glyphicon-remove"></span>Delete</a>
+<h2>{{item.name}}</h2>
+<p>{{item.description}}</p>
+<!-- {% if 'username' in session %} -->
+</div>
+<!-- {% endif %} -->
+{% endblock %}
