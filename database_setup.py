@@ -40,6 +40,7 @@ class Item(Base):
     description = Column(String(250))
     category_id = Column(Integer, ForeignKey('category.id'))
     created = Column(DateTime)
+    category = relationship(Category)
     user_id = Column(Integer, ForeignKey(User.id))
     user = relationship(User)
 
